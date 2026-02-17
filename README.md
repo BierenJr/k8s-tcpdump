@@ -117,22 +117,6 @@ wireshark ./trace.pcap
 
 The `--custom` flag accepts a YAML file to configure the ephemeral container spec. This is useful for setting resource limits or a security context when the default profile is too restrictive or permissive for your environment.
 
-**Example `debug-profile.yaml`:**
-```yaml
-env:
-  - name: TERM
-    value: xterm-256color
-resources:
-  limits:
-    cpu: "500m"
-    memory: "512Mi"
-securityContext:
-  capabilities:
-    add:
-      - NET_ADMIN
-      - NET_RAW
-```
-
 > `NET_RAW` and `NET_ADMIN` capabilities are typically required for `tcpdump` to capture packets. Ensure your cluster's Pod Security Standards permit these capabilities on the target namespace.
 
 ---
